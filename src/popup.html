@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Usage Bar</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <h1>AI Usage Bar</h1>
+    <button id="refresh" class="icon-btn" type="button" title="Re-read Claude usage now" aria-label="Refresh Claude usage">&#8635;</button>
+  </header>
+
+  <main id="list" aria-live="polite"></main>
+
+  <section class="settings">
+    <h2>Settings</h2>
+    <label class="check">
+      <input type="checkbox" id="showBar">
+      <span>Show the bar under the chat box</span>
+    </label>
+    <label class="field">
+      <span>Box style on the page</span>
+      <select id="barMode">
+        <option value="auto">Auto: under the chat box, or floating if it can't be found</option>
+        <option value="inline">Only under the chat box</option>
+        <option value="floating">Always a small floating box</option>
+      </select>
+    </label>
+    <p class="hint">The floating box starts folded up in the top-right corner, below the site's header. Drag its title bar to move it and click to open or fold it. <button type="button" id="resetPos" class="link-btn">Reset its position</button></p>
+    <fieldset>
+      <legend>ChatGPT message caps</legend>
+      <p class="hint">ChatGPT doesn't report an overall percentage. Type your plan's caps to get one, or leave these empty and let the tool learn them.</p>
+      <div class="caps">
+        <label>Per session <input type="number" min="0" step="1" id="capSession" placeholder="messages"></label>
+        <label>Per week <input type="number" min="0" step="1" id="capWeek" placeholder="messages"></label>
+      </div>
+      <div class="caps">
+        <label>Session length in hours <input type="number" min="0" step="1" id="capWindow" placeholder="auto"></label>
+      </div>
+      <p class="hint">Session length empty means 5 hours on the free plan and 3 hours otherwise. The tool also learns caps by itself when you hit a limit.</p>
+    </fieldset>
+  </section>
+
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
